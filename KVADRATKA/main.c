@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+
+#define LOWCONST 0.0001
 
 int solve_quadratic_equation(float a, float b, float c, float *root1, float *root2);
 
@@ -10,21 +13,21 @@ int main()
     
     printf("\nThis program solves a quadratic equation. \nEnter three coefficients (a b c) for the solution or any letter to exit.\n");
 
-    while (scanf("%f %f %f", &a, &b, &c) > 0)
+    while (scanf("%f %f %f", &a, &b, &c) == 3)
     {   
         char ch;
         while ((ch = getchar()) != '\n')     //пропускаем остальной ввод, если он был
             continue;
 
-        if (a==0)
+        if (abs(a) < LOWCONST)
         {
-            if (b==0 && c==0)
+            if (abs(b) < LOWCONST && abs(c) < LOWCONST)
                 printf("All coefficients are zero. Root is any number.\n");
 
-            else if (b==0 && c!=0)
+            else if (abs(b) < LOWCONST && abs(c) > LOWCONST)
                 printf("The equation has no roots! \n");
 
-            else{
+            else {
                 float root = -c / b;
                 printf("The introduced equation is linear. It has a single root = %.2f", root);
             }
@@ -51,12 +54,12 @@ int solve_quadratic_equation(float a, float b, float c, float *root1, float *roo
     float D = b*b - 4*a*c;
     if (D < 0)
         return 0;
-    else if (D == 0){
+    else if (D == 0) {
         *root1 = -b / (2 * a);
         *root2 = *root1;
         return 1;
     }
-    else{
+    else {
         *root1 = (-b - sqrt(D)) / (2 * a);
         *root2 = (-b + sqrt(D)) / (2 * a);
         return 2;
