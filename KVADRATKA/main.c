@@ -2,14 +2,15 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define LOWCONST 0.0001
+const float LOWCONST = 0.0001;
 
 int solve_quadratic_equation(float a, float b, float c, float *root1, float *root2);
 
 int main()
 {
     float a, b, c;  //введённые коэффициенты
-    float root1, root2;
+    a = b = c = 0;
+    float root1 = 0, root2 = 0;
     
     printf("\nThis program solves a quadratic equation. \nEnter three coefficients (a b c) for the solution or any letter to exit.\n");
 
