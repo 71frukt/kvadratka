@@ -26,15 +26,16 @@ int main()
     {   
         int n_roots = general_solve_equation(a, b, c, &root_1, &root_2);
         print_solve(n_roots, root_1, root_2);
-
+        
         if (menu() == 0)
-            break;
+        {
+            printf("The program is completed\n");
+            return 0;
+        }
         else
-            printf("\nEnter three coefficients (a b c) for the solution.\n");
+            printf("Enter three coefficients (a b c) for the solution.\n");
     }
     
-    printf("The program is completed\n");
-    return 0;
 }
 
 
@@ -46,7 +47,8 @@ int get_value(float *a, float *b, float *c)
     else
         exit_val = 0;
 
-    while (getchar() != '\n')     //пропускаем остальной ввод, если он был
+    char curr_ch = 0;
+    while ((curr_ch = getchar()) != '\n')     //пропускаем остальной ввод, если он был
         continue;    
 
     return exit_val;
@@ -119,18 +121,14 @@ int menu()
     
 
     while (1){
-        printf("\nEnter Y if you want to continue or N to exit: ");
+        printf("Enter Y if you want to continue or N to exit: ");
         scanf("%c", &enter_ch);
-
-        while (getchar() != '\n')
-            continue;
 
         if (enter_ch == 'Y' || enter_ch == 'y')
             return 1;
         else if (enter_ch == 'N' || enter_ch == 'n')
             return 0;
         else
-            printf("Incorrect input.");
-
+            continue;
     }
 }
