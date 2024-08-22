@@ -7,7 +7,7 @@
 #include "kvadratka.h"
 
 
-int main()
+int main(int argc, char *argv[])
 {
     float a = NAN;
     float c = NAN;
@@ -15,7 +15,17 @@ int main()
     float root_1 = NAN;
     float root_2 = NAN;
 
-    UnitTest(tests, 6);
+    bool flag_includes[FLAGS_COUNT] = {};
+    if (!FlagsHandler(argc, argv, flag_includes, FLAGS_COUNT)) {
+        printf("Incorrect flag");
+        return 0;
+    }
+    
+    if (flag_includes[0]) {
+        printf("ETO TESTER");
+        UnitTest(tests, 6);
+        return 0;
+    }
 
     
     printf("\nThis program solves a quadratic equation. \n");
@@ -37,6 +47,72 @@ int main()
     
     printf("The program is completed. \n");
     return 0;
+}
+
+bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
+{
+    bool all_valid = true;
+    for (int i = 1; i < arg_c; i++)
+    {
+        bool curr_valid = false;
+
+        for (int j = 0; j < flags_count; j++)
+        {
+            if (strcmp(arg_v[i], flags[j]) == 0) {
+                flag_includes[j] = true;
+                curr_valid = (curr_valid || true);
+            }
+        }
+
+        all_valid = (all_valid && curr_valid);
+    }
+
+    return all_valid;
+}
+
+is_tester_codes IsTester(int arg_c, char *arg_v[])
+{
+    bool is_in_flags = false;
+
+    for (int i = 1; i < arg_c; i++) 
+    {
+        for(int j = 0; j < FLAGS_COUNT; j++)
+        {
+            if (strcmp(arg_v[i], flags[j]) == 0)
+                is_in_flags = true; 
+        }
+
+        if (strcmp(arg_v[i], "-t") == 0)
+        {
+            printf("ETO TESTER!!!\n\n");
+            return DO_TEST;
+        }
+    }
+    
+    return DONOT_TEST;    
+}
+
+void UnitTest(test_values tests_loc[], int num_tests)
+{
+    for (int i = 0; i < num_tests; i++) 
+        RunTest(tests_loc[i], i);
+}
+
+void RunTest(test_values test, int num_test)
+{
+    float x1 = NAN;
+    float x2 = NAN;
+
+    count_of_roots n_roots = GeneralSolveEquation(test.a, test.b, test.c, &x1, &x2);
+
+    if (!IsEqualF(n_roots, test.n_roots_exp) || !IsEqualF(x1, test.x1_exp) || !IsEqualF(x2, test.x2_exp)) 
+    {
+        printf("Error test %d: a = %g, b = %g, c = %g, x1 = %g, x2 = %g, n_roots = %s \n"
+               "Expected: x1 = %g, x2 = %g, n_roots = %s \n\n",
+                (num_test + 1), test.a, test.b, test.c, x1, x2, GetCountOfRoots(n_roots), test.x1_exp, test.x2_exp, GetCountOfRoots(test.n_roots_exp));
+    }
+    else 
+        printf("COMPLETED test %d \n", num_test + 1);
 }
 
 bool GetInput(float *a, float *b, float *c)
@@ -74,7 +150,7 @@ bool CleanBuffer()
     bool success_clean = true;
     char curr_ch = 0;
 
-    while ((curr_ch = (char)getchar()) != '\n')       //пропускаем остальной ввод, если он был
+    while ((curr_ch = getchar()) != '\n')       //пропускаем остальной ввод, если он был
     {       
         if (!isspace(curr_ch)) 
             success_clean = false;
@@ -135,13 +211,13 @@ count_of_roots SolveQuadraticEquation(const float a, const float b, const float 
         return ONE_ROOT; 
     }
 
-    else {
+    else {                              //if D > 0
         float sqrt_discr = sqrt(discr);
 
         *root_1 = (- b - sqrt_discr) / (2 * a);
         *root_2 = (- b + sqrt_discr) / (2 * a);
 
-        assert(IsDifferentF(*root_1, *root_2));
+        assert(!IsEqualF(*root_1, *root_2));
 
         return TWO_ROOTS; 
     }
@@ -198,30 +274,6 @@ menu_code ExitMenu()
     return MENU_ERROR;
 }
 
-void UnitTest(test_values tests_loc[], int num_tests)
-{
-    for (int i = 0; i < num_tests; i++) 
-        RunTest(tests_loc[i], i);
-}
-
-//void RunTest(int num_test, float a, float b, float c, float x1_exp, float x2_exp, count_of_roots n_roots_exp)
-void RunTest(test_values test, int num_test)
-{
-    float x1 = NAN;
-    float x2 = NAN;
-
-    count_of_roots n_roots = GeneralSolveEquation(test.a, test.b, test.c, &x1, &x2);
-
-    if (IsDifferentF(n_roots, test.n_roots_exp) || IsDifferentF(x1, test.x1_exp) || IsDifferentF(x2, test.x2_exp)) 
-    {
-        printf("Error test %d: a = %g, b = %g, c = %g, x1 = %g, x2 = %g, n_roots = %s \n"
-               "Expected: x1 = %g, x2 = %g, n_roots = %s \n\n",
-                (num_test + 1), test.a, test.b, test.c, x1, x2, GetCountOfRoots(n_roots), test.x1_exp, test.x2_exp, GetCountOfRoots(test.n_roots_exp));
-    }
-    else 
-        printf("COMPLETED test %d \n", num_test + 1);
-}
-
 const char *GetCountOfRoots(count_of_roots n_roots)
 {
     switch (n_roots)
@@ -247,24 +299,17 @@ const char *GetCountOfRoots(count_of_roots n_roots)
     return "\0";
 }
 
-bool IsDifferentF(float num_1, float num_2)
-{
-    return ((fabs(num_1 - num_2) > LOWCONST) || IsGifferentNAN(num_1, num_2));
-}
-
-bool IsGifferentNAN(float num_1, float num_2)
-{
-    bool isnan_num_1 = isnan(num_1);
-    bool isnan_num_2 = isnan(num_2);
-
-    if (isnan_num_1 || isnan_num_2) 
-        if (isnan_num_1 && isnan_num_2)
-            return false;
-
-    return true;
+bool IsEqualF(float num_1, float num_2)
+{  
+    if (isnan(num_1) && isnan(num_2))
+        return true;
+    else 
+        return (fabs(num_1 - num_2) < LOWCONST);
 }
 
 bool IsZeroF(float num)
 {
-    return !IsDifferentF(num, 0);
+    return IsEqualF(num, 0);
 }
+
+
