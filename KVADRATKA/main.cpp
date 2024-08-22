@@ -15,9 +15,9 @@ int main()
     float root_1 = NAN;
     float root_2 = NAN;
 
-    UnitTest(tests, 12);
+    UnitTest(tests, 6);
 
-    /*
+    
     printf("\nThis program solves a quadratic equation. \n");
 
     while (true)
@@ -33,10 +33,8 @@ int main()
             break;
         else if (code == MENU_CONTINUE)
             continue;
-        else
-            main_exit_code = MAIN_ERROR;
     }
-    */
+    
     printf("The program is completed. \n");
     return 0;
 }
@@ -76,7 +74,7 @@ bool CleanBuffer()
     bool success_clean = true;
     char curr_ch = 0;
 
-    while ((curr_ch = getchar()) != '\n')       //пропускаем остальной ввод, если он был
+    while ((curr_ch = (char)getchar()) != '\n')       //пропускаем остальной ввод, если он был
     {       
         if (!isspace(curr_ch)) 
             success_clean = false;
@@ -92,6 +90,7 @@ count_of_roots GeneralSolveEquation(const float a, const float b, const float c,
     assert(root_1 != root_2);
 
     count_of_roots n_roots = ERROR_ROOTS;
+
     if (IsZeroF(a)) {                                  //if (a == 0)
         n_roots = SolveLinearEquation(b, c, root_1);
         *root_2 = NAN;
@@ -199,10 +198,10 @@ menu_code ExitMenu()
     return MENU_ERROR;
 }
 
-void UnitTest(test_values tests[], int num_tests)
+void UnitTest(test_values tests_loc[], int num_tests)
 {
     for (int i = 0; i < num_tests; i++) 
-        RunTest(tests[i], i);
+        RunTest(tests_loc[i], i);
 }
 
 //void RunTest(int num_test, float a, float b, float c, float x1_exp, float x2_exp, count_of_roots n_roots_exp)
@@ -239,6 +238,7 @@ const char *GetCountOfRoots(count_of_roots n_roots)
         case INFIN_ROOTS:
             return "INFIN_ROOTS";
             break;
+        case ERROR_ROOTS: 
         default:
             printf("Error of running test! Count of roots is incorrect \n");
             break;
@@ -249,14 +249,19 @@ const char *GetCountOfRoots(count_of_roots n_roots)
 
 bool IsDifferentF(float num_1, float num_2)
 {
-    if (isnan(num_1) || isnan(num_2)) {
-        if (isnan(num_1) && isnan(num_2))
-            return false;
-        else
-            return true;
-    }
+    return ((fabs(num_1 - num_2) > LOWCONST) || IsGifferentNAN(num_1, num_2));
+}
 
-    return (fabs(num_1 - num_2) > LOWCONST);
+bool IsGifferentNAN(float num_1, float num_2)
+{
+    bool isnan_num_1 = isnan(num_1);
+    bool isnan_num_2 = isnan(num_2);
+
+    if (isnan_num_1 || isnan_num_2) 
+        if (isnan_num_1 && isnan_num_2)
+            return false;
+
+    return true;
 }
 
 bool IsZeroF(float num)

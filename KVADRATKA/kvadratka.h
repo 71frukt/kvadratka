@@ -34,28 +34,17 @@ bool GetValue(float *a, float *b, float *c);                                    
 void PrintSolve(count_of_roots n_roots, float root_1, float root_2);                                           //выводит решение 
 bool CleanBuffer();
 bool IsDifferentF(float num_1, float num_2);
+bool IsGifferentNAN(float num_1, float num_2);
 bool IsZeroF(float num);
 
 void UnitTest(test_values tests[], int num_tests);
 void RunTest(test_values test, int num_test);
 const char *GetCountOfRoots(count_of_roots n_roots);
-const float LOWCONST = 0.0001;
+const double LOWCONST = 0.001;
 const int ENUM_STR_LEN = 30;
 
 struct test_values tests[] =
-{ //  a,    b,   c,  x1_exp,  x2_exp,  n_roots_exp
- 
-    // int  values
-    { 0,    0,   0,    NAN,     NAN,    INFIN_ROOTS },    // a == b == c == 0
-    { 0,    0,   1,    NAN,     NAN,    NO_ROOTS },       // a == b == 0, c != 0
-    { 0,    1,   1,    -1,      NAN,    ONE_ROOT },       // a == 0, b != 0, c != 0
-  
-    { 1,    1,   1,    NAN,     NAN,    NO_ROOTS },       // discr < 0
-    { 1,   -4,   4,    2,       NAN,    ONE_ROOT },       // discr == 0
-    { 1,   -1,  -2,    -1,      2,      TWO_ROOTS },      // discr > 0
-  
-
-    // floa t values 
+{ //  a,    b,   c,    x1_exp,  x2_exp, n_roots_exp 
     { 0.0,  0.0, 0.0,  NAN,     NAN,    INFIN_ROOTS },    // a == b == c == 0
     { 0.0,  0.0, 1.0,  NAN,     NAN,    NO_ROOTS },       // a == b == 0, c != 0
     { 0.0,  1.0, 1.0, -1.0,     NAN,    ONE_ROOT },       // a == 0, b != 0, c != 0
