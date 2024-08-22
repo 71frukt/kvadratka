@@ -51,7 +51,6 @@ int main(int argc, char *argv[])
 
 bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
 {
-    bool all_valid = true;
     for (int i = 1; i < arg_c; i++)
     {
         bool curr_valid = false;
@@ -60,16 +59,18 @@ bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_coun
         {
             if (strcmp(arg_v[i], flags[j]) == 0) {
                 flag_includes[j] = true;
-                curr_valid = (curr_valid || true);
+                curr_valid = true;
             }
         }
 
-        all_valid = (all_valid && curr_valid);
+        if (!curr_valid)
+            return false;
     }
 
-    return all_valid;
+    return true;
 }
 
+/* 
 is_tester_codes IsTester(int arg_c, char *arg_v[])
 {
     bool is_in_flags = false;
@@ -91,6 +92,7 @@ is_tester_codes IsTester(int arg_c, char *arg_v[])
     
     return DONOT_TEST;    
 }
+*/
 
 void UnitTest(test_values tests_loc[], int num_tests)
 {
@@ -150,7 +152,7 @@ bool CleanBuffer()
     bool success_clean = true;
     char curr_ch = 0;
 
-    while ((curr_ch = getchar()) != '\n')       //пропускаем остальной ввод, если он был
+    while ((curr_ch = (char)getchar()) != '\n')       //пропускаем остальной ввод, если он был
     {       
         if (!isspace(curr_ch)) 
             success_clean = false;

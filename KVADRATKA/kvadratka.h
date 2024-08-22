@@ -47,7 +47,7 @@ bool IsZeroF(float num);
 void UnitTest(test_values tests[], int num_tests);
 void RunTest(test_values test, int num_test);
 const char *GetCountOfRoots(count_of_roots n_roots);
-const float LOWCONST = 0.001;
+const float LOWCONST = 0.001f;
 const int ENUM_STR_LEN = 30;
 
 struct test_values tests[] =
@@ -63,7 +63,7 @@ struct test_values tests[] =
 
 
 const int FLAGS_COUNT = 5;
-char *flags[22] = {"-t", "-y", "-u", "i", "o"};
+const char *flags[FLAGS_COUNT] = {"-t", "-y", "-u", "i", "o"};
 
 
 
