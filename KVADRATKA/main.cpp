@@ -16,19 +16,19 @@ int main(int argc, char *argv[])
     float root_2 = NAN;
 
     bool flag_includes[FLAGS_COUNT] = {};
-    if (!FlagsHandler(argc, argv, flag_includes, FLAGS_COUNT)) {
+    if (!FlagsHandler(argc, argv, flag_includes, FLAGS_COUNT)) { // TODO: rename to GetCmdFlags
         printf("Incorrect flag");
         return 0;
     }
     
-    if (flag_includes[0]) {
-        printf("ETO TESTER");
-        UnitTest(tests, 6);
-        return 0;
-    }
+    for (int i = 0; i < FLAGS_COUNT; i++) {
+        if (flag_includes[i]) {
+            if(!flags_funcs[i].function())
+                return 0;
+        }
+    } // TODO: make as HandleFlag
 
-    
-    printf("\nThis program solves a quadratic equation. \n");
+    printf("\nThis program solves a quadratic equation. \n"); // TODO: make as StandartModeRun
 
     while (true)
     {  
@@ -51,13 +51,15 @@ int main(int argc, char *argv[])
 
 bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
 {
+    assert(arg_v);
+
     for (int i = 1; i < arg_c; i++)
     {
         bool curr_valid = false;
 
         for (int j = 0; j < flags_count; j++)
         {
-            if (strcmp(arg_v[i], flags[j]) == 0) {
+            if (strcmp(arg_v[i], flags_funcs[j].name) == 0) {
                 flag_includes[j] = true;
                 curr_valid = true;
             }
@@ -70,40 +72,20 @@ bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_coun
     return true;
 }
 
-/* 
-is_tester_codes IsTester(int arg_c, char *arg_v[])
+bool UnitTest()
 {
-    bool is_in_flags = false;
-
-    for (int i = 1; i < arg_c; i++) 
-    {
-        for(int j = 0; j < FLAGS_COUNT; j++)
-        {
-            if (strcmp(arg_v[i], flags[j]) == 0)
-                is_in_flags = true; 
-        }
-
-        if (strcmp(arg_v[i], "-t") == 0)
-        {
-            printf("ETO TESTER!!!\n\n");
-            return DO_TEST;
-        }
-    }
+    for (int num_test = 0; num_test < FLAGS_COUNT; num_test++) 
+        RunTest(num_test);
     
-    return DONOT_TEST;    
-}
-*/
-
-void UnitTest(test_values tests_loc[], int num_tests)
-{
-    for (int i = 0; i < num_tests; i++) 
-        RunTest(tests_loc[i], i);
+    return false;
 }
 
-void RunTest(test_values test, int num_test)
+void RunTest(int num_test)
 {
     float x1 = NAN;
     float x2 = NAN;
+
+    test_values test = tests[num_test];
 
     count_of_roots n_roots = GeneralSolveEquation(test.a, test.b, test.c, &x1, &x2);
 
@@ -119,6 +101,7 @@ void RunTest(test_values test, int num_test)
 
 bool GetInput(float *a, float *b, float *c)
 {
+    // TODO: put asserts
     printf("\nEnter three coefficients (a b c) for the solution.\n");
 
     if (GetValue(a, b, c) == false) {
@@ -272,7 +255,7 @@ menu_code ExitMenu()
             printf ("Incorrect input.");    //если enter_ch не y и не n  
     }
 
-    printf("Abnormai ExitMenu code");
+    printf("Abnormal ExitMenu code");
     return MENU_ERROR;
 }
 
@@ -295,10 +278,11 @@ const char *GetCountOfRoots(count_of_roots n_roots)
         case ERROR_ROOTS: 
         default:
             printf("Error of running test! Count of roots is incorrect \n");
+            // return here
             break;
     }
-
-    return "\0";
+    //put assert(0 && "Bad switch-case in GetCountOfRoots()")
+    return "";
 }
 
 bool IsEqualF(float num_1, float num_2)
