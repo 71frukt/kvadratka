@@ -9,47 +9,23 @@
 
 int main(int argc, char *argv[])
 {
-    float a = NAN;
-    float c = NAN;
-    float b = NAN;
-    float root_1 = NAN;
-    float root_2 = NAN;
-
+    bool todo_stand_prog = true;
     bool flag_includes[FLAGS_COUNT] = {};
-    if (!FlagsHandler(argc, argv, flag_includes, FLAGS_COUNT)) { // TODO: rename to GetCmdFlags
+
+    if (GetCmdFlags(argc, argv, flag_includes, FLAGS_COUNT) == false) { 
         printf("Incorrect flag");
         return 0;
     }
-    
-    for (int i = 0; i < FLAGS_COUNT; i++) {
-        if (flag_includes[i]) {
-            if(!flags_funcs[i].function())
-                return 0;
-        }
-    } // TODO: make as HandleFlag
 
-    printf("\nThis program solves a quadratic equation. \n"); // TODO: make as StandartModeRun
+    HandleFlags(flag_includes, FLAGS_COUNT, &todo_stand_prog);
 
-    while (true)
-    {  
-        if (GetInput(&a, &b, &c) == false)
-            continue;
-        
-        count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
-        PrintSolve(n_roots, root_1, root_2);
+    if(todo_stand_prog)
+        StandartProgRun();
 
-        menu_code code = ExitMenu();
-        if (code == MENU_EXIT)
-            break;
-        else if (code == MENU_CONTINUE)
-            continue;
-    }
-    
-    printf("The program is completed. \n");
     return 0;
 }
 
-bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
+bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
 {
     assert(arg_v);
 
@@ -72,12 +48,61 @@ bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_coun
     return true;
 }
 
-bool UnitTest()
+void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog)
+{
+    for (int i = 0; i < FLAGS_COUNT; i++) {
+        if (flag_includes[i]) {
+            flags_funcs[i].function();
+
+            if(flags_funcs[i].do_standart_prog == false)
+                *todo_stand_prog = false;
+        }
+    } // TODO: make as HandleFlag
+}
+
+void StandartProgRun()
+{
+    float a = NAN;
+    float c = NAN;
+    float b = NAN;
+    float root_1 = NAN;
+    float root_2 = NAN;
+
+    printf("\nThis program solves a quadratic equation. \n"); // TODO: make as StandartModeRun
+
+    while (true)
+    {  
+        if (GetInput(&a, &b, &c) == false)
+            continue;
+        
+        count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
+        PrintSolve(n_roots, root_1, root_2);
+
+        menu_code code = ExitMenu();
+        if (code == MENU_EXIT)
+            break;
+        else if (code == MENU_CONTINUE)
+            continue;
+    }
+    
+    printf("The program is completed. \n");
+}
+
+
+
+void UnitTest()
 {
     for (int num_test = 0; num_test < FLAGS_COUNT; num_test++) 
         RunTest(num_test);
     
-    return false;
+}
+
+void PrintHelp()
+{
+    printf("\n---------------------------- HELP -----------------------------------\n"
+            "For solving the quadratic equation of the form \"ax^2 + bx + c = 0\" \n"
+            "input coefs a, b, c in the form \"1 3 -9\"\n"
+            "---------------------------------------------------------------------\n\n");
 }
 
 void RunTest(int num_test)

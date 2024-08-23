@@ -28,15 +28,17 @@ enum is_tester_codes
 };
 
 
-bool FlagsHandler(int arg_c, char *arg_v[], bool flag_includes[], int flags_count);
+void StandartProgRun();
+bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count);
+void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog);
 bool GetInput(float *a, float *b, float *c);                                                        //получает ввод
 bool GetValue(float *a, float *b, float *c);                                                        //true, если принял все значения и false, если не все
 void PrintSolve(count_of_roots n_roots, float root_1, float root_2);                                           //выводит решение 
 bool CleanBuffer();
 bool IsEqualF(float num_1, float num_2);
 bool IsZeroF(float num);
-bool UnitTest(void);
-bool PrintHelp(void);
+void UnitTest(void);
+void PrintHelp(void);
 void RunTest(int num_test);
 const char *GetCountOfRoots(count_of_roots n_roots);
 const float LOWCONST = 0.001f;
@@ -64,16 +66,17 @@ const struct test_values tests[] =
 struct flags 
 {
     char name[10];
-    bool (*function)(void);        //true если необх. продолжить программу,  false если необх. return
+    void (*function)(void);        //true если необх. продолжить программу,  false если необх. return
+    bool do_standart_prog;
 };
 
 const int FLAGS_COUNT = 5;
 
 const struct flags flags_funcs[FLAGS_COUNT] = 
 {
-    {"-t", UnitTest},
-    {"-h", PrintHelp},
-    {"-u"}
+    {"-h", PrintHelp, true},
+    {"-t", UnitTest, false},
+    {"-u", NULL, true}
 };
 
 
