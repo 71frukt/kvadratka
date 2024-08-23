@@ -4,7 +4,9 @@
 #include <assert.h>
 #include <ctype.h>
 #include <string.h>
+
 #include "kvadratka.h"
+
 
 
 int main(int argc, char *argv[])
@@ -25,6 +27,35 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+void StandartProgRun()
+{
+    float a = NAN;
+    float c = NAN;
+    float b = NAN;
+    float root_1 = NAN;
+    float root_2 = NAN;
+
+    printf("\nThis program solves a quadratic equation. \n"); 
+
+    while (true)
+    {  
+        if (GetInput(&a, &b, &c) == false)
+            continue;
+        
+        count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
+        PrintSolve(n_roots, root_1, root_2);
+
+        menu_code code = ExitMenu();
+        if (code == MENU_EXIT)
+            break;
+        else if (code == MENU_CONTINUE)
+            continue;
+    }
+    
+    printf("The program is completed. \n");
+}
+
+/*
 bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
 {
     assert(arg_v);
@@ -57,45 +88,9 @@ void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog)
             if(flags_funcs[i].do_standart_prog == false)
                 *todo_stand_prog = false;
         }
-    } // TODO: make as HandleFlag
+    } 
 }
-
-void StandartProgRun()
-{
-    float a = NAN;
-    float c = NAN;
-    float b = NAN;
-    float root_1 = NAN;
-    float root_2 = NAN;
-
-    printf("\nThis program solves a quadratic equation. \n"); // TODO: make as StandartModeRun
-
-    while (true)
-    {  
-        if (GetInput(&a, &b, &c) == false)
-            continue;
-        
-        count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
-        PrintSolve(n_roots, root_1, root_2);
-
-        menu_code code = ExitMenu();
-        if (code == MENU_EXIT)
-            break;
-        else if (code == MENU_CONTINUE)
-            continue;
-    }
-    
-    printf("The program is completed. \n");
-}
-
-
-
-void UnitTest()
-{
-    for (int num_test = 0; num_test < FLAGS_COUNT; num_test++) 
-        RunTest(num_test);
-    
-}
+*/
 
 void PrintHelp()
 {
@@ -103,6 +98,12 @@ void PrintHelp()
             "For solving the quadratic equation of the form \"ax^2 + bx + c = 0\" \n"
             "input coefs a, b, c in the form \"1 3 -9\"\n"
             "---------------------------------------------------------------------\n\n");
+}
+
+void UnitTest()
+{
+    for (int num_test = 0; num_test < FLAGS_COUNT; num_test++) 
+        RunTest(num_test);
 }
 
 void RunTest(int num_test)
@@ -126,7 +127,11 @@ void RunTest(int num_test)
 
 bool GetInput(float *a, float *b, float *c)
 {
-    // TODO: put asserts
+    assert(a);
+    assert(b);
+    assert(c);
+    assert(!(a == c) || !(a == b) || !(b == c));
+
     printf("\nEnter three coefficients (a b c) for the solution.\n");
 
     if (GetValue(a, b, c) == false) {

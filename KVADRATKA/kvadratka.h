@@ -63,6 +63,7 @@ const struct test_values tests[] =
     { 1.0, -1.0,-2.0, -1.0,    2.0,     TWO_ROOTS }       // discr > 0
 };
 
+
 struct flags 
 {
     char name[10];
@@ -70,13 +71,12 @@ struct flags
     bool do_standart_prog;
 };
 
-const int FLAGS_COUNT = 5;
 
 const struct flags flags_funcs[FLAGS_COUNT] = 
 {
     {"-h", PrintHelp, true},
     {"-t", UnitTest, false},
-    {"-u", NULL, true}
+    {"-u"}
 };
 
 
