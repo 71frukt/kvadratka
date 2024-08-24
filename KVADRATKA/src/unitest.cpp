@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "unit-test.h"
-#include "flags-work.h"
+#include "unitest.h"
+#include "flags_work.h"
 
 void UnitTest()
 {

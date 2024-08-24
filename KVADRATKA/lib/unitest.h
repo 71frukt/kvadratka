@@ -1,3 +1,13 @@
+
+#ifndef UNITEST_H
+#define UNITEST_H
+
+#include <math.h>
+#include "solver.h"
+
+void UnitTest(void);
+void RunTest(int num_test);
+
 struct test_values
 {
     float a, b, c;
@@ -16,3 +26,5 @@ const struct test_values tests[] =
     { 1.0, -4.0, 4.0,  2.0,     NAN,    ONE_ROOT },       // discr == 0
     { 1.0, -1.0,-2.0, -1.0,    2.0,     TWO_ROOTS }       // discr > 0
 };
+
+#endif

@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "flags-work.h"
+#include "flags_work.h"
 
 bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
 {
@@ -29,7 +29,7 @@ bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count
 
 void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog)
 {
-    for (int i = 0; i < FLAGS_COUNT; i++) {
+    for (int i = 0; i < flags_count; i++) {
         if (flag_includes[i]) {
             flags_funcs[i].function();
 
