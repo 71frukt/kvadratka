@@ -1,23 +1,26 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
-enum count_of_roots
+enum count_of_roots         // перечисление возможного количества корней
 {
     NO_ROOTS,
     ONE_ROOT,
     TWO_ROOTS,
     INFIN_ROOTS,
-    ERROR_ROOTS
+    ERROR_ROOTS             // ошибка получения количества корней
 };
 
-const float LOWCONST = 0.001f;
+const float LOWCONST = 0.001f;          // Задает точность сравнения чисел
 
-count_of_roots GeneralSolveEquation(const float a, const  float b, const float c, float *root_1, float *root_2);     //СЂРµС€Р°РµС‚ РІРІРµРґС‘РЅРЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№
-count_of_roots SolveLinearEquation(const float b, const float c, float *root_1);                              //СЂРµС€Р°РµС‚ СѓСЂР°РІРЅРµРЅРёРµ РїСЂРё a == 0 (Р»РёРЅРµР№РЅРѕРµ РёР»Рё РµСЃР»Рё РІСЃРµ РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ == 0)
-count_of_roots SolveQuadraticEquation(const float a, const float b, const float c, float *root1, float *root2);     //СЂРµС€Р°РµС‚ РєРІР°РґСЂР°С‚РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№
-void PrintSolve(count_of_roots n_roots, float root_1, float root_2);                                           //РІС‹РІРѕРґРёС‚ СЂРµС€РµРЅРёРµ 
-const char *GetCountOfRoots(count_of_roots n_roots);
-bool IsEqualF(float num_1, float num_2);
-bool IsZeroF(float num);
+count_of_roots GeneralSolveEquation(const float a, const  float b, const float c, float *root_1, float *root_2);  // Hешает введённое уравнение и возвращает количество корней
+count_of_roots SolveLinearEquation(const float b, const float c, float *root_1);                                  // Решает уравнение при a == 0 (линейное или при всех коефф. == 0)
+count_of_roots SolveQuadraticEquation(const float a, const float b, const float c, float *root1, float *root2);   // Решает квадратное уравнение и возвращает количество корней
+
+void PrintSolve(count_of_roots n_roots, float root_1, float root_2);                      // Выводит решение уравнения
+    
+const char *GetCountOfRoots(count_of_roots n_roots);                                      // Возвращает указатель на строку, в которой записано количество корней
+
+bool IsEqualF(float num_1, float num_2);                                                  // Возвращает true, если числа равны с точностью до LOWCONST и false, если не равны
+bool IsZeroF(float num);                                                                  // Возвращает true, если число равно нулю с точностью до LOWCONST и false, если не равно
 
 #endif

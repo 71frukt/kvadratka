@@ -6,25 +6,28 @@
 #include "help.h"
 #include "draw_shrek.h"
 
-struct flags 
+const int FLAG_NAME_LEN = 10;       // Максимальня длина имени флага
+
+struct flag                         // Структура, объявляющая флаг
 {
-    char name[10];
-    void (*function)(void);        //true если необх. продолжить программу,  false если необх. return
-    bool do_standart_prog;
+    char name[FLAG_NAME_LEN];       // Имя флага
+    void (*function)(void);         // Указатель на функцию, которую выполняет данный флаг 
+    bool do_standart_prog;          // true если необх. продолжить программу,  false если необх. завершить после выполнения функций флагов
 };
 
 
-const int FLAGS_COUNT = 5;
+const int FLAGS_COUNT = 5;                          // Количество флагов
 
-const struct flags flags_funcs[FLAGS_COUNT] = 
+const struct flag flags_funcs[FLAGS_COUNT] =        // Массив структур, содержащий флаги
 {
     {"--shrek", DrawShrek,  true},
     {"-h",      PrintHelp,  true},
     {"-t",      UnitTest,   false}
 };
 
-bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count);
-void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog);
-
+bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count);          // Получает флаги из аргументов командной строки и записывает,
+                                                                                            // втретился флаг или нет в массив flag_includes[]
+void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog);             // Запускает функции полученных флагов и записывает, выполнять стандартную программу
+                                                                                            // или нет в bool todo_stand_prog
 #endif
 

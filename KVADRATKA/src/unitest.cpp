@@ -2,11 +2,11 @@
 #include <math.h>
 
 #include "unitest.h"
-#include "flags_work.h"
+//#include "flags_work.h"
 
 void UnitTest()
 {
-    for (int num_test = 0; num_test < FLAGS_COUNT; num_test++) 
+    for (int num_test = 0; num_test < TESTS_COUNT; num_test++) 
         RunTest(num_test);
 }
 

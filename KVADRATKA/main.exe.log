@@ -1,0 +1,234 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe, файл: c:\program files\codeblocks\mingw\include\txlib.h, строка: 13837, функция: bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0xAD34 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423FF0 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: (anonymous namespace)::TX::txAlphaBlend() at c:/program files/codeblocks/mingw/include/txlib.h (13837)
+# 1 0x00424E97 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: (anonymous namespace)::TX::txAlphaBlend() at c:/program files/codeblocks/mingw/include/txlib.h (13887)
+
+# 2 0x0042CC1A in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: DrawShrek() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/draw_shreck.cpp (13):
+
+     11:     
+     12:     txCreateWindow(sizeX, sizeY);
+=>   13:     txAlphaBlend(0, 0, shrek);
+     14: 
+     15:     txDeleteDC (shrek);
+
+# 3 0x0042E2A3 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: HandleFlags() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/flags_work.cpp (34):
+
+     32:     for (int i = 0; i < flags_count; i++) {
+     33:         if (flag_includes[i]) {
+=>   34:             flags_funcs[i].function();
+     35: 
+     36:             if(flags_funcs[i].do_standart_prog == false)
+
+# 4 0x00401830 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: main() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (27):
+
+     25:     }
+     26: 
+=>   27:     HandleFlags(flag_includes, FLAGS_COUNT, &todo_stand_prog);
+     28: 
+     29:     if(todo_stand_prog)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double) at c:\program files\codeblocks\mingw\include\txlib.h:13837:
+
+  13835:     {
+  13836: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13837: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13838: 
+  13839: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in bool {anonymous}::TX::txAlphaBlend(double, double, HDC, double, double, double) at c:\program files\codeblocks\mingw\include\txlib.h:13887:
+
+  13885: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  13886: 
+=>13887: $   return txAlphaBlend (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource, alpha);
+  13888:     }
+  13889: 
+
+# 2 in void DrawShrek() at src/draw_shreck.cpp:13:
+
+     11:     
+     12:     txCreateWindow(sizeX, sizeY);
+=>   13:     txAlphaBlend(0, 0, shrek);
+     14: 
+     15:     txDeleteDC (shrek);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 24 2024 20:01:48, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 24 2024 20:02:00
+
+Run file:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe
+Directory:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe, файл: c:\program files\codeblocks\mingw\include\txlib.h, строка: 13837, функция: bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: CMdRe0, Thread: 0xA714 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00423FF0 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: (anonymous namespace)::TX::txAlphaBlend() at c:/program files/codeblocks/mingw/include/txlib.h (13837)
+# 1 0x00424E97 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: (anonymous namespace)::TX::txAlphaBlend() at c:/program files/codeblocks/mingw/include/txlib.h (13887)
+
+# 2 0x0042CC1A in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: DrawShrek() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/draw_shreck.cpp (13):
+
+     11:     
+     12:     txCreateWindow(sizeX, sizeY);
+=>   13:     txAlphaBlend(0, 0, shrek);
+     14: 
+     15:     txDeleteDC (shrek);
+
+# 3 0x0042E2A3 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: HandleFlags() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/flags_work.cpp (34):
+
+     32:     for (int i = 0; i < flags_count; i++) {
+     33:         if (flag_includes[i]) {
+=>   34:             flags_funcs[i].function();
+     35: 
+     36:             if(flags_funcs[i].do_standart_prog == false)
+
+# 4 0x00401830 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: main() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (27):
+
+     25:     }
+     26: 
+=>   27:     HandleFlags(flag_includes, FLAGS_COUNT, &todo_stand_prog);
+     28: 
+     29:     if(todo_stand_prog)
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txAlphaBlend(HDC, double, double, double, double, HDC, double, double, double) at c:\program files\codeblocks\mingw\include\txlib.h:13837:
+
+  13835:     {
+  13836: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13837: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13838: 
+  13839: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in bool {anonymous}::TX::txAlphaBlend(double, double, HDC, double, double, double) at c:\program files\codeblocks\mingw\include\txlib.h:13887:
+
+  13885: $1  if (_TX_TXWINDOW_FAILED()) return false;
+  13886: 
+=>13887: $   return txAlphaBlend (txDC(), xDest, yDest, 0, 0, sourceImage, xSource, ySource, alpha);
+  13888:     }
+  13889: 
+
+# 2 in void DrawShrek() at src/draw_shreck.cpp:13:
+
+     11:     
+     12:     txCreateWindow(sizeX, sizeY);
+=>   13:     txAlphaBlend(0, 0, shrek);
+     14: 
+     15:     txDeleteDC (shrek);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 24 2024 20:06:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 24 2024 20:07:34
+
+Run file:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe
+Directory:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0065EDDC (32-bit), Flags: CMdRe0, Thread: 0x927C (Main), errno: 33 (Domain error). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004967B1 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: (anonymous namespace)::TX::_txOnSignal() at c:/program files/codeblocks/mingw/include/txlib.h (11078)
+# 1 0x76D08553 in C:\Windows\System32\msvcrt.dll: raise()
+# 2 0x76D0CA3B in C:\Windows\System32\msvcrt.dll: abort()
+# 3 0x76D093A7 in C:\Windows\System32\msvcrt.dll: assert()
+
+# 4 0x0040166B in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: SolveQuadraticEquation() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp (64):
+
+     62:         *root_2 = (- b + sqrt_discr) / (2 * a);
+     63: 
+=>   64:         assert(!IsEqualF(*root_1, *root_2));
+     65: 
+     66:         return TWO_ROOTS; 
+
+# 5 0x004014A3 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: GeneralSolveEquation() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp (19):
+
+     17:     }
+     18:     else    //РІРІРµРґС‘РЅРЅРѕРµ РєРІР°РґСЂР°С‚РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ РІСЃС‘-С‚Р°РєРё РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РєРІР°РґСЂР°С‚РЅРѕРµ   
+=>   19:         n_roots = SolveQuadraticEquation(a, b, c, root_1, root_2);    //РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№
+     20:     
+     21:     return n_roots;
+
+# 6 0x00458A09 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: StandartProgRun() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (50):
+
+     48:             continue;
+     49:         
+=>   50:         count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
+     51:         PrintSolve(n_roots, root_1, root_2);
+     52: 
+
+# 7 0x00458974 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: main() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (30):
+
+     28: 
+     29:     if(todo_stand_prog)
+=>   30:         StandartProgRun();
+     31: 
+     32:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\program files\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 26 2024 08:12:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 26 2024 08:13:07
+
+Run file:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe
+Directory:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA
+
+--------------------------------------------------

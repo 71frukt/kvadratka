@@ -29,7 +29,6 @@ void PrintRandomShreks(int window_size_x, int window_size_y, HDC shrek_icon, int
     int i = 0;
     while (i < num_shreks)
     {
-        clock_t curr_time = clock();
         //printf("%ld\n", curr_time);
 
         int rand_X = rand() % window_size_x;
@@ -42,6 +41,7 @@ void PrintRandomShreks(int window_size_x, int window_size_y, HDC shrek_icon, int
         i++;
 
         /*
+        clock_t curr_time = clock();
         if(abs(curr_time % delta_time) < 3) {
             //printf("%ld\n", curr_time);
             int rand_X = rand() % window_size_x;
