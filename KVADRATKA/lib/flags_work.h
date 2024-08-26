@@ -4,7 +4,7 @@
 #include <math.h>
 #include "unitest.h"
 #include "help.h"
-#include "draw_shreck.h"
+#include "draw_shrek.h"
 
 struct flags 
 {
@@ -18,9 +18,9 @@ const int FLAGS_COUNT = 5;
 
 const struct flags flags_funcs[FLAGS_COUNT] = 
 {
-    {"--shreck", DrawShreck, true},
-    {"-h", PrintHelp, true},
-    {"-t", UnitTest, false}
+    {"--shrek", DrawShrek,  true},
+    {"-h",      PrintHelp,  true},
+    {"-t",      UnitTest,   false}
 };
 
 bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count);
