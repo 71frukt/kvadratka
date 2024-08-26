@@ -74,6 +74,6 @@ menu_code ExitMenu()
             printf ("Incorrect input.");    //если enter_ch не y и не n  
     }
 
-    printf("Abnormal ExitMenu code");
+    printf("Abnormal ExitMenu code %d", MENU_ERROR);
     return MENU_ERROR;
 }
