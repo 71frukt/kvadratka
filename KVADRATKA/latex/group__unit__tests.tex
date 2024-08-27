@@ -1,0 +1,51 @@
+\hypertarget{group__unit__tests}{}\doxysection{MY SUPER TEST}
+\label{group__unit__tests}\index{MY SUPER TEST@{MY SUPER TEST}}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtest__values}{test\+\_\+values}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__unit__tests_gab9a7037299054f0b7be2b12500a93b92}\label{group__unit__tests_gab9a7037299054f0b7be2b12500a93b92}} 
+void \mbox{\hyperlink{group__unit__tests_gab9a7037299054f0b7be2b12500a93b92}{Unit\+Test}} (void)
+\begin{DoxyCompactList}\small\item\em Запускает юнитест, в котором находится TESTS\+\_\+\+COUNT тестов \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__unit__tests_ga78f714d7930f651c9bfe72159250d3c7}\label{group__unit__tests_ga78f714d7930f651c9bfe72159250d3c7}} 
+void {\bfseries Run\+Test} (int num\+\_\+test)
+\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__unit__tests_gaa4ebeb3d7a74271560b03f31ba744c1e}\label{group__unit__tests_gaa4ebeb3d7a74271560b03f31ba744c1e}} 
+const int \mbox{\hyperlink{group__unit__tests_gaa4ebeb3d7a74271560b03f31ba744c1e}{TESTS\+\_\+\+COUNT}} = 6
+\begin{DoxyCompactList}\small\item\em Количество тестов \end{DoxyCompactList}\item 
+const struct \mbox{\hyperlink{structtest__values}{test\+\_\+values}} {\bfseries tests} \mbox{[}\mbox{\hyperlink{group__unit__tests_gaa4ebeb3d7a74271560b03f31ba744c1e}{TESTS\+\_\+\+COUNT}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+~\newline
+ 
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{group__unit__tests_ga25c61ed2436d3de9959ca417a2837d22}\label{group__unit__tests_ga25c61ed2436d3de9959ca417a2837d22}} 
+\index{MY SUPER TEST@{MY SUPER TEST}!tests@{tests}}
+\index{tests@{tests}!MY SUPER TEST@{MY SUPER TEST}}
+\doxysubsubsection{\texorpdfstring{tests}{tests}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structtest__values}{test\+\_\+values}} tests\mbox{[}\mbox{\hyperlink{group__unit__tests_gaa4ebeb3d7a74271560b03f31ba744c1e}{TESTS\+\_\+\+COUNT}}\mbox{]}}
+
+{\bfseries Инициализатор}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=               }
+\DoxyCodeLine{\{ }
+\DoxyCodeLine{    \{ 0.0,  0.0, 0.0,  NAN,     NAN,    INFIN\_ROOTS \},      }
+\DoxyCodeLine{    \{ 0.0,  0.0, 1.0,  NAN,     NAN,    NO\_ROOTS    \},      }
+\DoxyCodeLine{    \{ 0.0,  1.0, 1.0, -\/1.0,     NAN,    ONE\_ROOT    \},      }
+\DoxyCodeLine{}
+\DoxyCodeLine{    \{ 1.0,  1.0, 1.0,  NAN,     NAN,    NO\_ROOTS    \},      }
+\DoxyCodeLine{    \{ 1.0, -\/4.0, 4.0,  2.0,     NAN,    ONE\_ROOT    \},      }
+\DoxyCodeLine{    \{ 1.0, -\/1.0,-\/2.0, -\/1.0,    2.0,     TWO\_ROOTS   \}       }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

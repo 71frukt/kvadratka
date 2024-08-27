@@ -6,28 +6,40 @@
 #include "help.h"
 #include "draw_shrek.h"
 
-const int FLAG_NAME_LEN = 10;       // РњР°РєСЃРёРјР°Р»СЊРЅСЏ РґР»РёРЅР° РёРјРµРЅРё С„Р»Р°РіР°
+/** 
+    \defgroup flags_work_h Работа с флагами 
+    @{   
+*/
 
-struct flag                         // РЎС‚СЂСѓРєС‚СѓСЂР°, РѕР±СЉСЏРІР»СЏСЋС‰Р°СЏ С„Р»Р°Рі
+const int FLAG_NAME_LEN = 10;       // Максимальня длина имени флага
+
+struct flag                         // Структура, объявляющая флаг
 {
-    char name[FLAG_NAME_LEN];       // РРјСЏ С„Р»Р°РіР°
-    void (*function)(void);         // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂСѓСЋ РІС‹РїРѕР»РЅСЏРµС‚ РґР°РЅРЅС‹Р№ С„Р»Р°Рі 
-    bool do_standart_prog;          // true РµСЃР»Рё РЅРµРѕР±С…. РїСЂРѕРґРѕР»Р¶РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ,  false РµСЃР»Рё РЅРµРѕР±С…. Р·Р°РІРµСЂС€РёС‚СЊ РїРѕСЃР»Рµ РІС‹РїРѕР»РЅРµРЅРёСЏ С„СѓРЅРєС†РёР№ С„Р»Р°РіРѕРІ
+    char name[FLAG_NAME_LEN];       // Имя флага
+    void (*function)(void);         // Указатель на функцию, которую выполняет данный флаг 
+    bool do_standart_prog;          // true если необх. продолжить программу,  false если необх. завершить после выполнения функций флагов
 };
 
 
-const int FLAGS_COUNT = 5;                          // РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р»Р°РіРѕРІ
+const int FLAGS_COUNT = 5;                          // Количество флагов
 
-const struct flag flags_funcs[FLAGS_COUNT] =        // РњР°СЃСЃРёРІ СЃС‚СЂСѓРєС‚СѓСЂ, СЃРѕРґРµСЂР¶Р°С‰РёР№ С„Р»Р°РіРё
+const struct flag flags_funcs[FLAGS_COUNT] =        // Массив структур, содержащий флаги
 {
     {"--shrek", DrawShrek,  true},
     {"-h",      PrintHelp,  true},
     {"-t",      UnitTest,   false}
 };
+/**
+ * @param arg_c Количество принимаемых аргументов командной строки
+ * @param arg_v Массив указателей
+ */
+bool GetCmdFlags(int arg_c, const char *arg_v[], bool flag_includes[], int flags_count);          // Получает флаги из аргументов командной строки и записывает,
+                                                                                            // втретился флаг или нет в массив flag_includes[]
+void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog);             // Запускает функции полученных флагов и записывает, выполнять стандартную программу
+                                                                                            // или нет в bool todo_stand_prog
 
-bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count);          // РџРѕР»СѓС‡Р°РµС‚ С„Р»Р°РіРё РёР· Р°СЂРіСѓРјРµРЅС‚РѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё Рё Р·Р°РїРёСЃС‹РІР°РµС‚,
-                                                                                            // РІС‚СЂРµС‚РёР»СЃСЏ С„Р»Р°Рі РёР»Рё РЅРµС‚ РІ РјР°СЃСЃРёРІ flag_includes[]
-void HandleFlags(bool flag_includes[], int flags_count, bool *todo_stand_prog);             // Р—Р°РїСѓСЃРєР°РµС‚ С„СѓРЅРєС†РёРё РїРѕР»СѓС‡РµРЅРЅС‹С… С„Р»Р°РіРѕРІ Рё Р·Р°РїРёСЃС‹РІР°РµС‚, РІС‹РїРѕР»РЅСЏС‚СЊ СЃС‚Р°РЅРґР°СЂС‚РЅСѓСЋ РїСЂРѕРіСЂР°РјРјСѓ
-                                                                                            // РёР»Рё РЅРµС‚ РІ bool todo_stand_prog
+/** 
+    @}
+*/                                                                                            
 #endif
 

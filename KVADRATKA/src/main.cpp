@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -11,16 +9,19 @@
 #include "user_interaction.h"
 #include "unitest.h"
 #include "flags_work.h"
+#include "changer_str.h"
 
 void StandartProgRun();
 
-int main(int argc, char *argv[])
+int main(const int argc, const char *argv[])
 {
     bool todo_stand_prog = true;
     bool flag_includes[FLAGS_COUNT] = {};
+    
+    //strcpy (argv[1], "SENYA KOLBASENYA");
 
     if (GetCmdFlags(argc, argv, flag_includes, FLAGS_COUNT) == false) { 
-        printf("Incorrect flag");
+        printf(CHANGE_STR_COLOR("Incorrect flag", RED));
         return 0;
     }
 
@@ -40,7 +41,7 @@ void StandartProgRun()
     float root_1 = NAN;
     float root_2 = NAN;
 
-    printf("\nThis program solves a quadratic equation. \n"); 
+    printf(CHANGE_STR_COLOR("\nThis program solves a quadratic equation. \n", GREEN)); 
 
     while (true)
     {  
@@ -57,7 +58,7 @@ void StandartProgRun()
             continue;
     }
     
-    printf("The program is completed. \n");
+    printf(CHANGE_STR_COLOR("The program is completed. \n", BLUE));
 }
 
 

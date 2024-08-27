@@ -232,3 +232,133 @@ Run file:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe
 Directory:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe,
+
+ВНЕЗАПНО: Переполнение при операции с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_OVERFLOW (0xC0000091) при выполнении кода по адресу 0x004015B9 в функции SolveQuadraticEquation() в файле C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp на строке 49 в модуле C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005EBA3C (32-bit), Flags: Cmdre0, Thread: 0xEF7C (Main), GetLastError(): 126 (РќРµ РЅР°Р№РґРµРЅ СѓРєР°Р·Р°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004015B9 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: SolveQuadraticEquation() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp (47):
+
+     45:     assert(root_1 != root_2);
+     46: 
+=>   47:     float discr = b * b - 4 * a * c; 
+     48: 
+     49:     if (discr < 0)
+
+# 1 0x004014A3 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: GeneralSolveEquation() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp (20):
+
+     18:     }
+     19:     else    //РІРІРµРґС‘РЅРЅРѕРµ РєРІР°РґСЂР°С‚РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ РІСЃС‘-С‚Р°РєРё РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РєРІР°РґСЂР°С‚РЅРѕРµ   
+=>   20:         n_roots = SolveQuadraticEquation(a, b, c, root_1, root_2);    //РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№
+     21:     
+     22:     return n_roots;
+
+# 2 0x00458A37 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: StandartProgRun() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (49):
+
+     47:             continue;
+     48:         
+=>   49:         count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
+     50:         PrintSolve(n_roots, root_1, root_2);
+     51: 
+
+# 3 0x004589A2 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: main() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (29):
+
+     27: 
+     28:     if(todo_stand_prog)
+=>   29:         StandartProgRun();
+     30: 
+     31:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	lib/TXLib.h
+Compiled:	Aug 27 2024 02:06:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 27 2024 12:45:15
+
+Run file:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe
+Directory:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Переполнение при операции с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_OVERFLOW (0xC0000091) при выполнении кода по адресу 0x004015B9 в функции SolveQuadraticEquation() в файле C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp на строке 49 в модуле C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005EBA3C (32-bit), Flags: Cmdre0, Thread: 0xEF7C (Main), GetLastError(): 126 (РќРµ РЅР°Р№РґРµРЅ СѓРєР°Р·Р°РЅРЅС‹Р№ РјРѕРґСѓР»СЊ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004015B9 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: SolveQuadraticEquation() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp (47):
+
+     45:     assert(root_1 != root_2);
+     46: 
+=>   47:     float discr = b * b - 4 * a * c; 
+     48: 
+     49:     if (discr < 0)
+
+# 1 0x004014A3 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: GeneralSolveEquation() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/solver.cpp (20):
+
+     18:     }
+     19:     else    //РІРІРµРґС‘РЅРЅРѕРµ РєРІР°РґСЂР°С‚РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ РІСЃС‘-С‚Р°РєРё РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РєРІР°РґСЂР°С‚РЅРѕРµ   
+=>   20:         n_roots = SolveQuadraticEquation(a, b, c, root_1, root_2);    //РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№
+     21:     
+     22:     return n_roots;
+
+# 2 0x00458A37 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: StandartProgRun() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (49):
+
+     47:             continue;
+     48:         
+=>   49:         count_of_roots n_roots = GeneralSolveEquation(a, b, c, &root_1, &root_2);
+     50:         PrintSolve(n_roots, root_1, root_2);
+     51: 
+
+# 3 0x004589A2 in C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe: main() at C:/Users/71fru/Documents/GitHub/kvadratka/KVADRATKA/src/main.cpp (29):
+
+     27: 
+     28:     if(todo_stand_prog)
+=>   29:         StandartProgRun();
+     30: 
+     31:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	lib/TXLib.h
+Compiled:	Aug 27 2024 02:06:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 27 2024 12:45:15
+
+Run file:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA\main.exe
+Directory:	C:\Users\71fru\Documents\GitHub\kvadratka\KVADRATKA
+
+--------------------------------------------------

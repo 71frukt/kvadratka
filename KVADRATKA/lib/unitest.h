@@ -5,20 +5,28 @@
 #include <math.h>
 #include "solver.h"
 
-const int TESTS_COUNT = 6;                                  // РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РµСЃС‚РѕРІ
 
-void UnitTest(void);                                        // Р—Р°РїСѓСЃРєР°РµС‚ СЋРЅРёС‚РµСЃС‚, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ TESTS_COUNT С‚РµСЃС‚РѕРІ
-void RunTest(int num_test);                                 // Р—Р°РїСѓСЃРєР°РµС‚ РєРѕРЅРєСЂРµС‚РЅС‹Р№ С‚РµСЃС‚ СЃ РЅРѕРјРµСЂРѕРј num_test
+/** 
+    \defgroup unit_tests MY SUPER TEST
+    \ingroup draw_shrek_h
+    @{   
+*/
 
-struct test_values                                          // CС‚СЂСѓРєС‚СѓСЂР°, РѕР±СЉСЏРІР»СЏСЋС‰Р°СЏ Р·РЅР°С‡РµРЅРёСЏ С‚РµСЃС‚РѕРІ
+/// Количество тестов
+const int TESTS_COUNT = 6;                                  
+
+void UnitTest(void);                                        //!< Запускает юнитест, в котором находится TESTS_COUNT тестов
+void RunTest(int num_test);                                 // Запускает конкретный тест с номером num_test
+
+struct test_values                                          // Cтруктура, объявляющая значения тестов
 {                                                           
-    float a, b, c;                                          // a, b, c - РєРѕРµС„С„РёС†РёРµРЅС‚С‹ СѓСЂР°РІРЅРµРЅРёСЏ
+    float a, b, c;                                          // a, b, c - коеффициенты уравнения
                                                             
-    float x1_exp, x2_exp;                                   // x1_exp, x2_exp - РѕР¶РёРґР°РµРјС‹Рµ РІРµСЂРЅС‹Рµ РєРѕСЂРЅРё
-    count_of_roots n_roots_exp;                             // n_roots_exp - РѕР¶РёРґР°РµРјРѕРµ РІРµСЂРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№ С‚РёРїР° count_of_roots (РїРµСЂРµС‡РёСЃР»РµРЅРёРµ РІРѕР·РјРѕР¶РЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° РєРѕСЂРЅРµР№)
+    float x1_exp, x2_exp;                                   // x1_exp, x2_exp - ожидаемые верные корни
+    count_of_roots n_roots_exp;                             // n_roots_exp - ожидаемое верное количество корней типа count_of_roots (перечисление возможного количества корней)
 };
 
-const struct test_values tests[TESTS_COUNT] =               // РњР°СЃСЃРёРІ СЃС‚СЂСѓРєС‚СѓСЂ С‚РёРїР° test_values, СЃРѕРґРµСЂР¶Р°С‰Р°СЏ Р·РЅР°С‡РµРЅРёСЏ TESTS_COUNT С‚РµСЃС‚РѕРІ
+const struct test_values tests[TESTS_COUNT] =               // Массив структур типа test_values, содержащая значения TESTS_COUNT тестов
 { //  a,    b,   c,    x1_exp,  x2_exp, n_roots_exp 
     { 0.0,  0.0, 0.0,  NAN,     NAN,    INFIN_ROOTS },      // a == b == c == 0
     { 0.0,  0.0, 1.0,  NAN,     NAN,    NO_ROOTS    },      // a == b == 0, c != 0
@@ -28,5 +36,9 @@ const struct test_values tests[TESTS_COUNT] =               // РњР°СЃСЃРёРІ СЃС‚
     { 1.0, -4.0, 4.0,  2.0,     NAN,    ONE_ROOT    },      // discr == 0
     { 1.0, -1.0,-2.0, -1.0,    2.0,     TWO_ROOTS   }       // discr > 0
 };
+
+/** 
+    @}   
+*/
 
 #endif

@@ -67,35 +67,37 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef UNITEST_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define UNITEST_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">    #define UNITEST_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;solver.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> UnitTest(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> RunTest(<span class="keywordtype">int</span> num_test);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structtest__values.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtest__values.html">test_values</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">float</span> a, b, c;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> x1_exp, x2_exp;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    count_of_roots n_roots_exp;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="structtest__values.html">test_values</a> tests[] =</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{ <span class="comment">//  a,    b,   c,    x1_exp,  x2_exp, n_roots_exp </span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    { 0.0,  0.0, 0.0,  NAN,     NAN,    INFIN_ROOTS },    <span class="comment">// a == b == c == 0</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    { 0.0,  0.0, 1.0,  NAN,     NAN,    NO_ROOTS },       <span class="comment">// a == b == 0, c != 0</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    { 0.0,  1.0, 1.0, -1.0,     NAN,    ONE_ROOT },       <span class="comment">// a == 0, b != 0, c != 0</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    { 1.0,  1.0, 1.0,  NAN,     NAN,    NO_ROOTS },       <span class="comment">// discr &lt; 0</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    { 1.0, -4.0, 4.0,  2.0,     NAN,    ONE_ROOT },       <span class="comment">// discr == 0</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    { 1.0, -1.0,-2.0, -1.0,    2.0,     TWO_ROOTS }       <span class="comment">// discr &gt; 0</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructtest__values_html"><div class="ttname"><a href="structtest__values.html">test_values</a></div><div class="ttdef"><b>Definition:</b> unitest.h:15</div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> TESTS_COUNT = 6;                                  <span class="comment">// количество тестов</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> UnitTest(<span class="keywordtype">void</span>);                                        <span class="comment">// Запускает юнитест, в котором находится TESTS_COUNT тестов</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> RunTest(<span class="keywordtype">int</span> num_test);                                 <span class="comment">// Запускает конкретный тест с номером num_test</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structtest__values.html">   13</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structtest__values.html">test_values</a>                                          <span class="comment">// Cтруктура, объявляющая значения тестов</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{                                                           </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">float</span> a, b, c;                                          <span class="comment">// a, b, c - коеффициенты уравнения</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                                            </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> x1_exp, x2_exp;                                   <span class="comment">// x1_exp, x2_exp - ожидаемые верные корни</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    count_of_roots n_roots_exp;                             <span class="comment">// n_roots_exp - ожидаемое верное количество корней типа count_of_roots (перечисление возможного количества корней)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="structtest__values.html">test_values</a> tests[TESTS_COUNT] =               <span class="comment">// Массив структур типа test_values, содержащая значения TESTS_COUNT тестов</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{ <span class="comment">//  a,    b,   c,    x1_exp,  x2_exp, n_roots_exp </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    { 0.0,  0.0, 0.0,  NAN,     NAN,    INFIN_ROOTS },      <span class="comment">// a == b == c == 0</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    { 0.0,  0.0, 1.0,  NAN,     NAN,    NO_ROOTS    },      <span class="comment">// a == b == 0, c != 0</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    { 0.0,  1.0, 1.0, -1.0,     NAN,    ONE_ROOT    },      <span class="comment">// a == 0, b != 0, c != 0</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    { 1.0,  1.0, 1.0,  NAN,     NAN,    NO_ROOTS    },      <span class="comment">// discr &lt; 0</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    { 1.0, -4.0, 4.0,  2.0,     NAN,    ONE_ROOT    },      <span class="comment">// discr == 0</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    { 1.0, -1.0,-2.0, -1.0,    2.0,     TWO_ROOTS   }       <span class="comment">// discr &gt; 0</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructtest__values_html"><div class="ttname"><a href="structtest__values.html">test_values</a></div><div class="ttdef"><b>Definition:</b> unitest.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: Исходный файл lib/draw_shrek.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">draw_shrek.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DRAW_SHREK</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define DRAW_SHREK</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;TXLib.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="group__draw__shrek__h.html#ga9a885e896c4bdc3ed6b8fe682abdc037">   12</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="group__draw__shrek__h.html#ga9a885e896c4bdc3ed6b8fe682abdc037">shreks_count</a> = 400;               </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> shreks_delta_time = 75;           <span class="comment">// Время, через которое выведеся следующий шрек (в миллисекундах)</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> DrawShrek(<span class="keywordtype">void</span>);                       <span class="comment">// Функция, выводящая всех шреков на экран</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="group__draw__shrek__h.html#ga9832069c050700ce0cc3a04083628cf7">   20</a></span>&#160;<span class="comment"></span><span class="keywordtype">void</span> <a class="code" href="group__draw__shrek__h.html#ga9832069c050700ce0cc3a04083628cf7">PrintRandomShreks</a>(<span class="keywordtype">int</span> window_size_x, <span class="keywordtype">int</span> window_size_y, HDC shrek_icon, <span class="keywordtype">int</span> num_shreks, <span class="keywordtype">int</span> delta_time);   <span class="comment">// Функция, выводящая num_shreks шреков в псевдорандомном месте</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                                                                                                <span class="comment">// на экране с разрешением (window_size_x X window_size_y) </span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                                                                                <span class="comment">// через каждые delta_time (в миллисекундах)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span><span class="preprocessor">#endif                                                                                                          </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="ttc" id="agroup__draw__shrek__h_html_ga9832069c050700ce0cc3a04083628cf7"><div class="ttname"><a href="group__draw__shrek__h.html#ga9832069c050700ce0cc3a04083628cf7">PrintRandomShreks</a></div><div class="ttdeci">void PrintRandomShreks(int window_size_x, int window_size_y, HDC shrek_icon, int num_shreks, int delta_time)</div></div>
+<div class="ttc" id="agroup__draw__shrek__h_html_ga9a885e896c4bdc3ed6b8fe682abdc037"><div class="ttname"><a href="group__draw__shrek__h.html#ga9a885e896c4bdc3ed6b8fe682abdc037">shreks_count</a></div><div class="ttdeci">const int shreks_count</div><div class="ttdoc">Количество шреков, которое выведется на экран</div><div class="ttdef"><b>Definition:</b> draw_shrek.h:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

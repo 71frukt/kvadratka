@@ -68,19 +68,20 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef USER_INTERACTION_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define USER_INTERACTION_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">enum</span> menu_code</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">enum</span> menu_code                                                  <span class="comment">// Перечисление кодов завершения функции ExitMenu</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    MENU_ERROR = -1,</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    MENU_EXIT = 0,</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    MENU_CONTINUE = 1</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;menu_code ExitMenu();  </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;menu_code ExitMenu();                                           <span class="comment">// Запускает пользовательское меню</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> GetInput(<span class="keywordtype">float</span> *a, <span class="keywordtype">float</span> *b, <span class="keywordtype">float</span> *c);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> GetValue(<span class="keywordtype">float</span> *a, <span class="keywordtype">float</span> *b, <span class="keywordtype">float</span> *c);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> CleanBuffer();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> GetInput(<span class="keywordtype">float</span> *a, <span class="keywordtype">float</span> *b, <span class="keywordtype">float</span> *c);                    <span class="comment">// Начинает ввод коеффициентов квадратного уравнения и возвращает значение, полученное из GetValue</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> GetValue(<span class="keywordtype">float</span> *a, <span class="keywordtype">float</span> *b, <span class="keywordtype">float</span> *c);                    <span class="comment">// Получает значения из ввода с клавиатуры и возвращает true, если ввод корректен, и false в противном случае</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                                                <span class="comment">// и возвращает true, если успешно и false в противном случае</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> CleanBuffer();                                             <span class="comment">// Очищает буффер после функции scanf и возвращает false, если после ввода встретились сторонние символы</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

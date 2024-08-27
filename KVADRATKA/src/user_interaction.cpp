@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <ctype.h>
 #include "user_interaction.h"
+#include "changer_str.h"
 
 bool GetInput(float *a, float *b, float *c)
 {
@@ -10,10 +11,10 @@ bool GetInput(float *a, float *b, float *c)
     assert(c);
     assert(a != b || b != c || a != c);
 
-    printf("\nEnter three coefficients (a b c) for the solution.\n");
+    printf(CHANGE_STR_COLOR("\nEnter three coefficients (a b c) for the solution.\n", GREEN));
 
     if (GetValue(a, b, c) == false) {
-        printf("Incorrect input! Try again. \n");
+        printf(CHANGE_STR_COLOR("Incorrect input! Try again. \n", YELLOW));
         return false;
     }
     return true; 
@@ -58,11 +59,13 @@ menu_code ExitMenu()
 
     while (true)
     {
-        printf("\nEnter \'y\' if you want to continue or \'n\' to exit: ");
+        printf("\nEnter " CHANGE_STR_COLOR("y", GREEN) " if you want to continue or " 
+                CHANGE_STR_COLOR("n", RED) " to exit: ");
+
         scanf("%c", &enter_ch);
 
         if (CleanBuffer() == false) {         //если далее идут символы
-            printf("Incorrect input.");
+            printf(CHANGE_STR_COLOR("Incorrect input", YELLOW));
             continue;
         }
 
@@ -71,7 +74,7 @@ menu_code ExitMenu()
         else if (tolower(enter_ch) == 'n')
             return MENU_EXIT;
         else
-            printf ("Incorrect input.");    //если enter_ch не y и не n  
+            printf(CHANGE_STR_COLOR("Incorrect input", YELLOW));
     }
 
     printf("Abnormal ExitMenu code %d", MENU_ERROR);

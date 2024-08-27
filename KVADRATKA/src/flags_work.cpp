@@ -4,7 +4,7 @@
 
 #include "flags_work.h"
 
-bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)
+bool GetCmdFlags(int arg_c, const char *arg_v[], bool flag_includes[], int flags_count)
 {
     assert(arg_v);
 

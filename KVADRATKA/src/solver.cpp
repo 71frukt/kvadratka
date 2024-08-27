@@ -2,6 +2,7 @@
 #include <math.h>
 #include <assert.h>
 #include "solver.h"
+#include "changer_str.h"
 
 count_of_roots GeneralSolveEquation(const float a, const float b, const float c, float *root_1, float *root_2)
 {
@@ -15,8 +16,8 @@ count_of_roots GeneralSolveEquation(const float a, const float b, const float c,
         n_roots = SolveLinearEquation(b, c, root_1);
         *root_2 = NAN;
     }
-    else    //введённое квадратное уравнение всё-таки действительно квадратное   
-        n_roots = SolveQuadraticEquation(a, b, c, root_1, root_2);    //количество корней
+    else    //РІРІРµРґС‘РЅРЅРѕРµ РєРІР°РґСЂР°С‚РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ РІСЃС‘-С‚Р°РєРё РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РєРІР°РґСЂР°С‚РЅРѕРµ   
+        n_roots = SolveQuadraticEquation(a, b, c, root_1, root_2);    //РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕСЂРЅРµР№
     
     return n_roots;
 }
@@ -113,16 +114,16 @@ void PrintSolve(count_of_roots n_roots, const float root_1, const float root_2)
     switch (n_roots)
     {
         case NO_ROOTS:
-            printf("The equation has no roots! \n");
+            printf(CHANGE_STR_COLOR("The equation has no roots! \n", CYAN));
             break;
         case ONE_ROOT:
-            printf("The equation has a single root = %.2f \n", root_1);
+            printf(CHANGE_STR_COLOR("The equation has a single root = %.2f \n", CYAN), root_1);
             break;
         case TWO_ROOTS:
-            printf("The introduced equation is solver. It has two roots: %.2f, %.2f \n", root_1, root_2);
+            printf(CHANGE_STR_COLOR("The introduced equation is solver. It has two roots: %.2f, %.2f \n", CYAN), root_1, root_2);
             break;
         case INFIN_ROOTS:
-            printf("All coefficients are zero. Root is any number.\n");
+            printf(CHANGE_STR_COLOR("All coefficients are zero. Root is any number.\n", CYAN));
             break; 
         case ERROR_ROOTS:                                                            
         default:

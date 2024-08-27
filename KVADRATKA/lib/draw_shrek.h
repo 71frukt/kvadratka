@@ -3,10 +3,31 @@
 
 #include "TXLib.h"
 
-const int shreks_count = 400;               // РљРѕР»РёС‡РµСЃС‚РІРѕ С€СЂРµРєРѕРІ, РєРѕС‚РѕСЂРѕРµ РІС‹РІРµРґРµС‚СЃСЏ РЅР° СЌРєСЂР°РЅ
-const int shreks_delta_time = 75;           // Р’СЂРµРјСЏ, С‡РµСЂРµР· РєРѕС‚РѕСЂРѕРµ РІС‹РІРµРґРµСЃСЏ СЃР»РµРґСѓСЋС‰РёР№ С€СЂРµРє (РІ РјРёР»Р»РёСЃРµРєСѓРЅРґР°С…)
+/** 
+    \defgroup draw_shrek_h Consts
+    @{   
+*/
 
-void DrawShrek(void);                       // Р¤СѓРЅРєС†РёСЏ, РІС‹РІРѕРґСЏС‰Р°СЏ РІСЃРµС… С€СЂРµРєРѕРІ РЅР° СЌРєСЂР°РЅ
-void PrintRandomShreks(int window_size_x, int window_size_y, HDC shrek_icon, int num_shreks, int delta_time);   // Р¤СѓРЅРєС†РёСЏ, РІС‹РІРѕРґСЏС‰Р°СЏ num_shreks С€СЂРµРєРѕРІ РІ РїСЃРµРІРґРѕСЂР°РЅРґРѕРјРЅРѕРј РјРµСЃС‚Рµ
-                                                                                                                // РЅР° СЌРєСЂР°РЅРµ СЃ СЂР°Р·СЂРµС€РµРЅРёРµРј (window_size_x X window_size_y) 
-#endif                                                                                                          // С‡РµСЂРµР· РєР°Р¶РґС‹Рµ delta_time (РІ РјРёР»Р»РёСЃРµРєСѓРЅРґР°С…)
+namespace global
+{
+
+/// Количество шреков, которое выведется на экран
+const int shreks_count = 400;               
+const int shreks_delta_time = 75;           // Время, через которое выведеся следующий шрек (в миллисекундах)
+
+}
+
+void DrawShrek(void);                       // Функция, выводящая всех шреков на экран
+/**
+ @param window_size_x Размер окна в длину
+*/
+void PrintRandomShreks(int window_size_x, int window_size_y, HDC shrek_icon, int num_shreks, int delta_time);   // Функция, выводящая num_shreks шреков в псевдорандомном месте
+                                                                                                                // на экране с разрешением (window_size_x X window_size_y) 
+                                                                                                                // через каждые delta_time (в миллисекундах)
+/** 
+    @}   
+*/
+
+#endif                                                                                                          
+
+

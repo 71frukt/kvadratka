@@ -2,7 +2,7 @@
 #include <math.h>
 
 #include "unitest.h"
-//#include "flags_work.h"
+#include "changer_str.h"
 
 void UnitTest()
 {
@@ -26,5 +26,5 @@ void RunTest(int num_test)
                 (num_test + 1), test.a, test.b, test.c, x1, x2, GetCountOfRoots(n_roots), test.x1_exp, test.x2_exp, GetCountOfRoots(test.n_roots_exp));
     }
     else 
-        printf("COMPLETED test %d \n", num_test + 1);
+        printf(CHANGE_STR_COLOR("COMPLETED", GREEN) CHANGE_STR_COLOR(" test %d", CYAN) "\n", num_test + 1);
 }

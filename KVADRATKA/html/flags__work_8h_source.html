@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Project: Исходный файл lib/flags_work.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">flags_work.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FLAGS_WORK_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FLAGS_WORK_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;unitest.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;help.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;draw_shrek.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> FLAG_NAME_LEN = 10;       <span class="comment">// Максимальня длина имени флага</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structflag.html">   16</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structflag.html">flag</a>                         <span class="comment">// Структура, объявляющая флаг</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">char</span> name[FLAG_NAME_LEN];       <span class="comment">// Имя флага</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    void (*<span class="keyword">function</span>)(void);         <span class="comment">// Указатель на функцию, которую выполняет данный флаг </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> do_standart_prog;          <span class="comment">// true если необх. продолжить программу,  false если необх. завершить после выполнения функций флагов</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> FLAGS_COUNT = 5;                          <span class="comment">// Количество флагов</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="structflag.html">flag</a> flags_funcs[FLAGS_COUNT] =        <span class="comment">// Массив структур, содержащий флаги</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {<span class="stringliteral">&quot;--shrek&quot;</span>, DrawShrek,  <span class="keyword">true</span>},</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {<span class="stringliteral">&quot;-h&quot;</span>,      PrintHelp,  <span class="keyword">true</span>},</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {<span class="stringliteral">&quot;-t&quot;</span>,      <a class="code" href="group__unit__tests.html#gab9a7037299054f0b7be2b12500a93b92">UnitTest</a>,   <span class="keyword">false</span>}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="group__flags__work__h.html#ga61b17099ef009e85e1d758c923c8b5da">   40</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="group__flags__work__h.html#ga61b17099ef009e85e1d758c923c8b5da">GetCmdFlags</a>(<span class="keywordtype">int</span> arg_c, <span class="keywordtype">char</span> *arg_v[], <span class="keywordtype">bool</span> flag_includes[], <span class="keywordtype">int</span> flags_count);          <span class="comment">// Получает флаги из аргументов командной строки и записывает,</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                                                            <span class="comment">// втретился флаг или нет в массив flag_includes[]</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> HandleFlags(<span class="keywordtype">bool</span> flag_includes[], <span class="keywordtype">int</span> flags_count, <span class="keywordtype">bool</span> *todo_stand_prog);             <span class="comment">// Запускает функции полученных флагов и записывает, выполнять стандартную программу</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                                                            <span class="comment">// или нет в bool todo_stand_prog</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="ttc" id="agroup__flags__work__h_html_ga61b17099ef009e85e1d758c923c8b5da"><div class="ttname"><a href="group__flags__work__h.html#ga61b17099ef009e85e1d758c923c8b5da">GetCmdFlags</a></div><div class="ttdeci">bool GetCmdFlags(int arg_c, char *arg_v[], bool flag_includes[], int flags_count)</div><div class="ttdoc">Обновляет изображение в окне TXLib вручную.</div></div>
+<div class="ttc" id="agroup__unit__tests_html_gab9a7037299054f0b7be2b12500a93b92"><div class="ttname"><a href="group__unit__tests.html#gab9a7037299054f0b7be2b12500a93b92">UnitTest</a></div><div class="ttdeci">void UnitTest(void)</div><div class="ttdoc">Запускает юнитест, в котором находится TESTS_COUNT тестов</div></div>
+<div class="ttc" id="astructflag_html"><div class="ttname"><a href="structflag.html">flag</a></div><div class="ttdef"><b>Definition:</b> flags_work.h:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,72 @@
+\hypertarget{group__flags__work__h}{}\doxysection{Работа с флагами}
+\label{group__flags__work__h}\index{Работа с флагами@{Работа с флагами}}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structflag}{flag}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group__flags__work__h_ga61b17099ef009e85e1d758c923c8b5da}{Get\+Cmd\+Flags}} (int arg\+\_\+c, char $\ast$arg\+\_\+v\mbox{[}$\,$\mbox{]}, bool flag\+\_\+includes\mbox{[}$\,$\mbox{]}, int flags\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Обновляет изображение в окне TXLib вручную. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__flags__work__h_gab7fffc094f3495238995b82bd738e7e9}\label{group__flags__work__h_gab7fffc094f3495238995b82bd738e7e9}} 
+void {\bfseries Handle\+Flags} (bool flag\+\_\+includes\mbox{[}$\,$\mbox{]}, int flags\+\_\+count, bool $\ast$todo\+\_\+stand\+\_\+prog)
+\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__flags__work__h_gaaa3b8d813db83af58d9a5cf5b3904fdd}\label{group__flags__work__h_gaaa3b8d813db83af58d9a5cf5b3904fdd}} 
+const int {\bfseries FLAG\+\_\+\+NAME\+\_\+\+LEN} = 10
+\item 
+\mbox{\Hypertarget{group__flags__work__h_ga80feaac8ea68dd5e0deaca6d95117d79}\label{group__flags__work__h_ga80feaac8ea68dd5e0deaca6d95117d79}} 
+const int {\bfseries FLAGS\+\_\+\+COUNT} = 5
+\item 
+const struct \mbox{\hyperlink{structflag}{flag}} {\bfseries flags\+\_\+funcs} \mbox{[}FLAGS\+\_\+\+COUNT\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+~\newline
+ 
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{group__flags__work__h_ga61b17099ef009e85e1d758c923c8b5da}\label{group__flags__work__h_ga61b17099ef009e85e1d758c923c8b5da}} 
+\index{Работа с флагами@{Работа с флагами}!GetCmdFlags@{GetCmdFlags}}
+\index{GetCmdFlags@{GetCmdFlags}!Работа с флагами@{Работа с флагами}}
+\doxysubsubsection{\texorpdfstring{GetCmdFlags()}{GetCmdFlags()}}
+{\footnotesize\ttfamily bool Get\+Cmd\+Flags (\begin{DoxyParamCaption}\item[{int}]{arg\+\_\+c,  }\item[{char $\ast$}]{arg\+\_\+v\mbox{[}$\,$\mbox{]},  }\item[{bool}]{flag\+\_\+includes\mbox{[}$\,$\mbox{]},  }\item[{int}]{flags\+\_\+count }\end{DoxyParamCaption})}
+
+
+
+Обновляет изображение в окне TXLib вручную. 
+
+\begin{DoxyVerb}     Более полную информацию об автоматическом обновлении см. в функции txBegin(). См. также txEnd(),
+     txUpdateWindow(), txSleep().
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Аргументы}
+{\em arg\+\_\+c} & Количество принимаемых аргументов командной строки \\
+\hline
+{\em arg\+\_\+v} & Массив указателей \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{group__flags__work__h_gad83e94d62f09327c5e513fff556260e0}\label{group__flags__work__h_gad83e94d62f09327c5e513fff556260e0}} 
+\index{Работа с флагами@{Работа с флагами}!flags\_funcs@{flags\_funcs}}
+\index{flags\_funcs@{flags\_funcs}!Работа с флагами@{Работа с флагами}}
+\doxysubsubsection{\texorpdfstring{flags\_funcs}{flags\_funcs}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structflag}{flag}} flags\+\_\+funcs\mbox{[}FLAGS\+\_\+\+COUNT\mbox{]}}
+
+{\bfseries Инициализатор}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=        }
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}-\/-\/shrek"{}}, DrawShrek,  \textcolor{keyword}{true}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}-\/h"{}},      PrintHelp,  \textcolor{keyword}{true}\},}
+\DoxyCodeLine{    \{\textcolor{stringliteral}{"{}-\/t"{}},      \mbox{\hyperlink{group__unit__tests_gab9a7037299054f0b7be2b12500a93b92}{UnitTest}},   \textcolor{keyword}{false}\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

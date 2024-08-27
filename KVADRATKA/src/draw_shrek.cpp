@@ -19,7 +19,7 @@ void DrawShrek()
 
     HDC shrek = txLoadImage("Images/shrek.bmp");
 
-    PrintRandomShreks(window_size_x, window_size_y, shrek, shreks_count, shreks_delta_time);
+    PrintRandomShreks(window_size_x, window_size_y, shrek, global::shreks_count, global::shreks_delta_time);
 
     txDeleteDC (shrek);
 }
